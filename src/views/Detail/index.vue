@@ -80,11 +80,11 @@
                 <dt class="title">{{ spuSaleAttr.saleAttrName }}</dt>
                 <dd
                   changepirce="0"
-                  class="active"
+                  :class="{ active: spuSaleAttrValue.isCheckd == 1 }"
                   v-for="spuSaleAttrValue in spuSaleAttrValueList"
                   :key="spuSaleAttrValue.id"
                 >
-                  123{{ spuSaleAttrValue.saleAttrValueName }}
+                  {{ spuSaleAttrValue.saleAttrValueName }}
                 </dd>
               </dl>
             </div>
