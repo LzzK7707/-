@@ -2,7 +2,6 @@
   <div class="detail">
     <!-- 商品分类导航 -->
     <TypeNav />
-
     <!-- 主要内容区域 -->
     <section class="con">
       <!-- 导航路径区域 -->
