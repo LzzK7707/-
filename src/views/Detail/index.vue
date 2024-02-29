@@ -80,9 +80,15 @@
                 <dt class="title">{{ spuSaleAttr.saleAttrName }}</dt>
                 <dd
                   changepirce="0"
-                  :class="{ active: spuSaleAttrValue.isCheckd == 1 }"
-                  v-for="spuSaleAttrValue in spuSaleAttrValueList"
+                  :class="{ active: spuSaleAttrValue.isChecked == '1' }"
+                  v-for="spuSaleAttrValue in spuSaleAttr.spuSaleAttrValueList"
                   :key="spuSaleAttrValue.id"
+                  @click="
+                    changeActive(
+                      spuSaleAttrValue,
+                      spuSaleAttr.spuSaleAttrValueList
+                    )
+                  "
                 >
                   {{ spuSaleAttrValue.saleAttrValueName }}
                 </dd>
@@ -340,6 +346,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Detail',
+  components: {
+    ImageList,
+    Zoom
+  },
   mounted() {
     this.$store.dispatch('getGoodsInfo', this.$route.params.skuid)
   },
@@ -349,9 +359,13 @@ export default {
       return this.skuInfo.skuImageList || []
     }
   },
-  components: {
-    ImageList,
-    Zoom
+  methods: {
+    changeActive(saleAttrValue, arr) {
+      arr.forEach(item => {
+        item.isChecked = '0'
+      })
+      saleAttrValue.isChecked = '1'
+    }
   }
 }
 </script>
@@ -512,7 +526,7 @@ export default {
 
                 &.active {
                   color: green;
-                  border: 1px solid green;
+                  border: 3px solid red;
                 }
               }
             }
