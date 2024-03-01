@@ -9,26 +9,49 @@
           <div class="sort" v-show="show">
             <div class="all-sort-list2">
               <!--一级分类地盘-->
-              <div class="item" v-for="(c1, index) in categoryList" :key="c1.categoryId">
-                <h3 @mouseenter="enterHandler(index)" :class="{ active: currentIndex == index }">
-                  <a :data-categoryName="c1.categoryName" :data-category1Id="c1.categoryId">
+              <div
+                class="item"
+                v-for="(c1, index) in categoryList"
+                :key="c1.categoryId"
+              >
+                <h3
+                  @mouseenter="enterHandler(index)"
+                  :class="{ active: currentIndex == index }"
+                >
+                  <a
+                    :data-categoryName="c1.categoryName"
+                    :data-category1Id="c1.categoryId"
+                  >
                     {{ c1.categoryName }}
                   </a>
                 </h3>
                 <!-- 通过JS实现动态行内样式，进行二级、三级分类的显示与隐藏(display:none|block切换的) -->
-                <div class="item-list clearfix" :style="{ display: currentIndex == index ? 'block' : 'none' }">
+                <div
+                  class="item-list clearfix"
+                  :style="{ display: currentIndex == index ? 'block' : 'none' }"
+                >
                   <!--二级分类-->
-                  <div class="subitem" v-for="c2 in c1.categoryChild" :key="c2.categoryId">
+                  <div
+                    class="subitem"
+                    v-for="c2 in c1.categoryChild"
+                    :key="c2.categoryId"
+                  >
                     <dl class="fore">
                       <dt>
-                        <a :data-categoryName="c2.categoryName" :data-category2Id="c2.categoryId">
+                        <a
+                          :data-categoryName="c2.categoryName"
+                          :data-category2Id="c2.categoryId"
+                        >
                           {{ c2.categoryName }}
                         </a>
                       </dt>
                       <dd>
                         <!--三级分类-->
                         <em v-for="c3 in c2.categoryChild" :key="c3.categoryId">
-                          <a :data-categoryName="c3.categoryName" :data-category3Id="c3.categoryId">
+                          <a
+                            :data-categoryName="c3.categoryName"
+                            :data-category3Id="c3.categoryId"
+                          >
                             {{ c3.categoryName }}
                           </a>
                         </em>
@@ -69,7 +92,7 @@ export default {
     return {
       //利用响应式属性,将来存储用户鼠标进入哪一个一级分类的索引值
       currentIndex: -1,
-      show: true, //默认显示
+      show: true //默认显示
     }
   },
   methods: {
@@ -103,13 +126,14 @@ export default {
       //要区分一级分类、二级分类、三级分类的a标签
       let targetNode = event.target
       //获取触发事件节点的自定义属性a:data-categoryNam
-      let { categoryname, category1id, category2id, category3id } = targetNode.dataset
+      let { categoryname, category1id, category2id, category3id } =
+        targetNode.dataset
       //判断点击的是a标签
       if (categoryname) {
         //点击只要是a标签,就是往search模块跳转
         let locations = {
           name: 'search',
-          query: { categoryName: categoryname },
+          query: { categoryName: categoryname }
         }
         // 一级分类的a标签
         if (category1id) {
@@ -128,7 +152,7 @@ export default {
         //目前商品分类这里携带参数只有query参数
         this.$router.push(locations)
       }
-    },
+    }
   },
   //不管是Home|Search利用的都是全局组件TypeNav,TypeNav在Home路由与Search路由下状态不一样的。
   mounted() {
@@ -140,9 +164,9 @@ export default {
   //计算属性
   computed: {
     ...mapState({
-      categoryList: (state) => state.home.categoryList, //对象简写形式
-    }),
-  },
+      categoryList: state => state.home.categoryList //对象简写形式
+    })
+  }
 }
 </script>
 
@@ -288,4 +312,3 @@ export default {
   }
 }
 </style>
-
