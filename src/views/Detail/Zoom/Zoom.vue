@@ -40,7 +40,6 @@ export default {
       if (left >= mask.offsetWidth) left = offsetWidth
       if (top <= 0) top = 0
       if (top >= mask.offsetHeight) top = mask.offsetHeight
-
       // 修改letf和top的值
       mask.style.left = left + 'px'
       mask.style.top = top + 'px'
