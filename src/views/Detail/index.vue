@@ -32,9 +32,7 @@
             <p class="news">{{ skuInfo.skuDesc }}</p>
             <div class="priceArea">
               <div class="priceArea1">
-                <div class="title">
-                  价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格
-                </div>
+                <div class="title">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
                 <div class="price">
                   <i>¥</i>
                   <em>{{ skuInfo.price }}</em>
@@ -59,12 +57,8 @@
             </div>
             <div class="support">
               <div class="supportArea">
-                <div class="title">
-                  支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持
-                </div>
-                <div class="fixWidth">
-                  以旧换新，闲置手机回收 4G套餐超值抢 礼品购
-                </div>
+                <div class="title">支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</div>
+                <div class="fixWidth">以旧换新，闲置手机回收 4G套餐超值抢 礼品购</div>
               </div>
               <div class="supportArea">
                 <div class="title">配 送 至</div>
@@ -83,12 +77,7 @@
                   :class="{ active: spuSaleAttrValue.isChecked == '1' }"
                   v-for="spuSaleAttrValue in spuSaleAttr.spuSaleAttrValueList"
                   :key="spuSaleAttrValue.id"
-                  @click="
-                    changeActive(
-                      spuSaleAttrValue,
-                      spuSaleAttr.spuSaleAttrValueList
-                    )
-                  "
+                  @click="changeActive(spuSaleAttrValue, spuSaleAttr.spuSaleAttrValueList)"
                 >
                   {{ spuSaleAttrValue.saleAttrValueName }}
                 </dd>
@@ -96,9 +85,9 @@
             </div>
             <div class="cartWrap">
               <div class="controls">
-                <input autocomplete="off" class="itxt" />
-                <a href="javascript:" class="plus">+</a>
-                <a href="javascript:" class="mins">-</a>
+                <input autocomplete="off" class="itxt" v-model="skuNum" @change="changeSkuNum" />
+                <a href="javascript:" class="plus" @click="skuNum++">+</a>
+                <a href="javascript:" class="mins" @click="skuNum > 1 ? skuNum-- : (skuNum = 1)">-</a>
               </div>
               <div class="add">
                 <a href="javascript:">加入购物车</a>
@@ -346,6 +335,11 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Detail',
+  data() {
+    return {
+      skuNum: 0
+    }
+  },
   components: {
     ImageList,
     Zoom
@@ -360,11 +354,15 @@ export default {
     }
   },
   methods: {
+    // 产品的售卖属性切换高亮
     changeActive(saleAttrValue, arr) {
       arr.forEach(item => {
         item.isChecked = '0'
       })
       saleAttrValue.isChecked = '1'
+    },
+    changeSkuNum() {
+      console.log('修改产品个数')
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="spec-preview">
     <img :src="imgObj.imgUrl" />
-    <div class="event" @mousemove="handle"></div>
+    <div class="event" @mousemove="handler"></div>
     <div class="big">
       <img :src="imgObj.imgUrl" ref="big" />
     </div>
@@ -30,21 +30,22 @@ export default {
     })
   },
   methods: {
-    handle() {
-      let mask = this.$refs.mask
-      let big = this.$refs.big
-      let left = event.offsetX - mask.offsetWidth / 2
-      let top = event.offsetY - mask.offsetHeight / 2
-      // 约束范围
-      if (left <= 0) left = 0
-      if (left >= mask.offsetWidth) left = offsetWidth
-      if (top <= 0) top = 0
-      if (top >= mask.offsetHeight) top = mask.offsetHeight
-      // 修改letf和top的值
-      mask.style.left = left + 'px'
-      mask.style.top = top + 'px'
-      big.style.left = -2 * left + 'px'
-      big.style.top = -2 * top + 'px'
+    handler(e) {
+      //获取蒙板
+      let mask = this.$refs.mask;    
+      let big = this.$refs.big;
+      //计算蒙板的left|top数值
+      let l = e.offsetX - mask.offsetWidth / 2;
+      let t = e.offsetY - mask.offsetHeight / 2;
+      //约束蒙板的上下左右范围
+      if (l < 0) l = 0;
+      if (l > mask.offsetWidth) l = mask.offsetWidth;
+      if (t < 0) t = 0;
+      if (t > mask.offsetHeight) t = mask.offsetHeight;
+      mask.style.left = l + "px";
+      mask.style.top = t + "px";
+      big.style.left = -2 * l + "px";
+      big.style.top = -2 * t + "px";
     }
   }
 }

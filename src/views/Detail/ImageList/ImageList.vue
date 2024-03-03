@@ -32,7 +32,6 @@ export default {
   methods: {
     emitIndex(index) {
       this.$bus.$emit('getIndex', index)
-      log
     }
   },
   watch: {
