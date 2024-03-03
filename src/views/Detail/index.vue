@@ -361,8 +361,15 @@ export default {
       })
       saleAttrValue.isChecked = '1'
     },
-    changeSkuNum() {
-      console.log('修改产品个数')
+    changeSkuNum(event) {
+      // 用户输入的文本乘1
+      let value = event.target.value * 1
+      // 如果用户输入法非法文本
+      if (isNaN(value) || value < 1) {
+        this.skuNum = 1
+      } else {
+        this.skuNum = Math.floor(value)
+      }
     }
   }
 }

@@ -1,16 +1,8 @@
 <template>
   <div class="swiper-container" ref="cur">
     <div class="swiper-wrapper">
-      <div
-        class="swiper-slide"
-        v-for="(slide, index) in skuImageList"
-        :key="slide.id"
-      >
-        <img
-          :src="slide.imgUrl"
-          :class="{ active: currentIndex == index }"
-          @click="emitIndex(index)"
-        />
+      <div class="swiper-slide" v-for="(slide, index) in skuImageList" :key="slide.id">
+        <img :src="slide.imgUrl" :class="{ active: currentIndex == index }" @click="emitIndex(index)" />
       </div>
     </div>
     <div class="swiper-button-next"></div>
