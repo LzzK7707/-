@@ -90,7 +90,7 @@
                 <a href="javascript:" class="mins" @click="skuNum > 1 ? skuNum-- : (skuNum = 1)">-</a>
               </div>
               <div class="add">
-                <a href="javascript:">加入购物车</a>
+                <a @click="addToShopCar">加入购物车</a>
               </div>
             </div>
           </div>
@@ -337,7 +337,8 @@ export default {
   name: 'Detail',
   data() {
     return {
-      skuNum: 0
+      // 购买产品的个数
+      skuNum: 1
     }
   },
   components: {
@@ -361,6 +362,7 @@ export default {
       })
       saleAttrValue.isChecked = '1'
     },
+    // 修改购买数量
     changeSkuNum(event) {
       // 用户输入的文本乘1
       let value = event.target.value * 1
@@ -368,8 +370,12 @@ export default {
       if (isNaN(value) || value < 1) {
         this.skuNum = 1
       } else {
-        this.skuNum = Math.floor(value)
+        this.skuNum = parseInt(value)
       }
+    },
+    // 添加到购物车
+    addToShopCar() {
+      this.$store.dispatch('addOrUpdateShopCart', { skuId: this.$route.params.skuid, skuNum: this.skuNum })
     }
   }
 }

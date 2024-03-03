@@ -1,15 +1,21 @@
-import { reqGoodsInfo } from '@/api'
+import { reqGoodsInfo, reqAddOrUpdateShopCart } from '@/api'
 
 const state = {
   goodsInfo: {}
 }
 
 const actions = {
-  async getGoodsInfo({ commit }, skuid) {
-    let result = await reqGoodsInfo(skuid)
+  // 获取商品详情信息
+  async getGoodsInfo({ commit }, skuId) {
+    let result = await reqGoodsInfo(skuId)
     if (result.code == 200) {
       commit('RECEIVE_GOODS_INFO', result.data)
     }
+  },
+  // 将产品添加到购物车
+  async addOrUpdateShopCart({ commit }, {skuId, skuNum}) {
+    let result = await reqAddOrUpdateShopCart(skuId, skuNum)
+    console.log(result)
   }
 }
 
@@ -21,7 +27,7 @@ const mutations = {
 
 const getters = {
   categoryView() {
-    return state.goodsInfo.categoryView || {} 
+    return state.goodsInfo.categoryView || {}
   },
   skuInfo() {
     return state.goodsInfo.skuInfo || {}
@@ -37,8 +43,3 @@ export default {
   actions,
   getters
 }
-
-
-
-
-
