@@ -15,13 +15,13 @@ export default {
   name: 'App',
   components: {
     Header,
-    Footer,
+    Footer
   },
   mounted() {
     // 派发action，获取商品分类列表的数据
     // 只触发一次
     this.$store.dispatch('getCategoryList')
-  },
+  }
 }
 </script>
 

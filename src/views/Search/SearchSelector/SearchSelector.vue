@@ -5,11 +5,7 @@
       <div class="value logos">
         <!-- 品牌列表 -->
         <ul class="logo-list">
-          <li
-            v-for="trademark in trademarkList"
-            :key="trademark.tmId"
-            @click="trademarkHandler(trademark)"
-          >
+          <li v-for="trademark in trademarkList" :key="trademark.tmId" @click="trademarkHandler(trademark)">
             {{ trademark.tmName }}
           </li>
         </ul>

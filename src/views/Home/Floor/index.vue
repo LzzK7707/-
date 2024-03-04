@@ -75,7 +75,7 @@
 <script>
 export default {
   name: '',
-  props: ['list'],
+  props: ['list']
 }
 </script>
 

@@ -42,14 +42,14 @@
 </template>
 
 <script>
-import login from '@/views/Login/index.vue';
+import login from '@/views/Login/index.vue'
 
 export default {
   name: 'Header',
   data() {
     return {
-      keyword: '',
-    };
+      keyword: ''
+    }
   },
   methods: {
     // 搜索按钮的回调函数:需要向search路由进行跳转
@@ -63,18 +63,18 @@ export default {
 
       // 第三种：对象形式
       if (this.$route.query) {
-        let location = { name: 'search', params: { keyword: this.keyword || undefined } };
-        location.query = this.$route.query;
-        this.$router.push(location);
+        let location = { name: 'search', params: { keyword: this.keyword || undefined } }
+        location.query = this.$route.query
+        this.$router.push(location)
       }
-    },
+    }
   },
   mounted() {
     this.$bus.$on('removeKeywordBread', () => {
-      this.keyword = '';
-    });
-  },
-};
+      this.keyword = ''
+    })
+  }
+}
 </script>
 
 <style lang="less" scoped>

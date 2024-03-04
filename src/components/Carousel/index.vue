@@ -39,7 +39,7 @@ export default {
               //分页器类型
               type: 'bullets',
               //点击分页器，切换轮播
-              clickable: true,
+              clickable: true
             },
             //自动轮播
             autoplay: {
@@ -48,20 +48,20 @@ export default {
               //如果设置为true，当切换到最后一个slide时停止自动切换
               stopOnLastSlide: true,
               //用户操作swiper之后，是否禁止autoplay
-              disableOnInteraction: false,
+              disableOnInteraction: false
             },
             // 如果需要前进后退按钮
             navigation: {
               nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
+              prevEl: '.swiper-button-prev'
+            }
             //切换效果
             // effect: "cube",
           })
         })
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>
 

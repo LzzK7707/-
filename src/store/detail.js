@@ -13,16 +13,15 @@ const actions = {
     }
   },
   // 将产品添加到购物车
-  async addOrUpdateShopCart({ commit }, {skuId, skuNum}) {
+  async addOrUpdateShopCart({ commit }, { skuId, skuNum }) {
+    // 发送请求
     let result = await reqAddOrUpdateShopCart(skuId, skuNum)
     // 加入购物车成功
-    if (result.code === 200) {
+    if (result.code == 200) {
       return 'ok'
-
     } else {
       return Promise.reject(new Error('faile'))
     }
-
   }
 }
 

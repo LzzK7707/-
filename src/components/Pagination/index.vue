@@ -1,16 +1,8 @@
 <template>
   <div class="pagination">
     <!-- 左 -->
-    <button :disabled="pageNo == 1" @click="$emit('getPageNo', pageNo - 1)">
-      上一页
-    </button>
-    <button
-      :class="{ active: pageNo == 1 }"
-      v-if="startAndEnd.start > 1"
-      @click="$emit('getPageNo', 1)"
-    >
-      1
-    </button>
+    <button :disabled="pageNo == 1" @click="$emit('getPageNo', pageNo - 1)">上一页</button>
+    <button :class="{ active: pageNo == 1 }" v-if="startAndEnd.start > 1" @click="$emit('getPageNo', 1)">1</button>
     <button v-if="startAndEnd.start > 2">...</button>
     <!-- 中间 -->
     <button
@@ -31,12 +23,7 @@
     >
       {{ totalPage }}
     </button>
-    <button
-      :disabled="pageNo == totalPage"
-      @click="$emit('getPageNo', pageNo + 1)"
-    >
-      下一页
-    </button>
+    <button :disabled="pageNo == totalPage" @click="$emit('getPageNo', pageNo + 1)">下一页</button>
     <button style="margin-left: 30px">共 {{ total }} 条</button>
   </div>
 </template>

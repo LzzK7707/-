@@ -27,11 +27,7 @@
               <i @click="removeTrademarkBread">×</i>
             </li>
             <!-- 属性值的面包屑 -->
-            <li
-              class="with-x"
-              v-for="(attrValue, index) in searchParams.props"
-              :key="index"
-            >
+            <li class="with-x" v-for="(attrValue, index) in searchParams.props" :key="index">
               {{ attrValue.split(':')[1] }}
               <i @click="removePropsBread(index)">×</i>
             </li>
@@ -40,10 +36,7 @@
 
         <!--selector-->
         <!-- 绑定自定义事件，子组件给父组件传递数据 -->
-        <SearchSelector
-          @getTrademarkInfo="getTrademarkInfo"
-          @getAttrInfo="getAttrInfo"
-        />
+        <SearchSelector @getTrademarkInfo="getTrademarkInfo" @getAttrInfo="getAttrInfo" />
 
         <!--details-->
         <div class="details clearfix">
@@ -115,16 +108,8 @@
                     </i>
                   </div>
                   <div class="operate">
-                    <a
-                      href="success-cart.html"
-                      target="_blank"
-                      class="sui-btn btn-bordered btn-danger"
-                    >
-                      加入购物车
-                    </a>
-                    <a href="javascript:void(0);" class="sui-btn btn-bordered">
-                      收藏
-                    </a>
+                    <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                    <a href="javascript:void(0);" class="sui-btn btn-bordered">收藏</a>
                   </div>
                 </div>
               </li>
@@ -245,8 +230,7 @@ export default {
     // 自定义事件：获取属性
     getAttrInfo(attr, attrValue) {
       let newProps = `${attr.attrId}:${attrValue}:${attr.attrName}`
-      if (this.searchParams.props.indexOf(newProps) == -1)
-        this.searchParams.props.push(newProps)
+      if (this.searchParams.props.indexOf(newProps) == -1) this.searchParams.props.push(newProps)
       this.getData()
     },
     // 排序的操作
@@ -258,9 +242,7 @@ export default {
       let newOrder = ' '
       // 综合
       if (flag == originalFlag) {
-        newOrder = `${originalFlag}:${
-          originalSortType == 'desc' ? 'asc' : 'desc'
-        }`
+        newOrder = `${originalFlag}:${originalSortType == 'desc' ? 'asc' : 'desc'}`
       } else {
         //价格
         newOrder = `${flag}:desc`

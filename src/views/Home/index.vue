@@ -27,16 +27,16 @@ export default {
     Rank,
     Like,
     Floor,
-    Brand,
+    Brand
   },
   mounted() {
     this.$store.dispatch('getFloorList') // 不能再floor组件中派遣， floor组件需要使用两次
   },
   computed: {
     ...mapState({
-      floorList: (state) => state.home.floorList,
-    }),
-  },
+      floorList: state => state.home.floorList
+    })
+  }
 }
 </script>
 

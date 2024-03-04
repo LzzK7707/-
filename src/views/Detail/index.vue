@@ -380,7 +380,8 @@ export default {
           skuId: this.$route.params.skuid,
           skuNum: this.skuNum
         })
-        //
+        // 进行路由的跳转
+        this.$router.push({ name: 'addcartsuccess', params: '' })
       } catch (error) {
         alert(error.message)
       }
