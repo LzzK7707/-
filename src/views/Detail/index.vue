@@ -374,8 +374,16 @@ export default {
       }
     },
     // 添加到购物车
-    addToShopCar() {
-      this.$store.dispatch('addOrUpdateShopCart', { skuId: this.$route.params.skuid, skuNum: this.skuNum })
+    async addToShopCar() {
+      try {
+        await this.$store.dispatch('addOrUpdateShopCart', {
+          skuId: this.$route.params.skuid,
+          skuNum: this.skuNum
+        })
+        //
+      } catch (error) {
+        alert(error.message)
+      }
     }
   }
 }

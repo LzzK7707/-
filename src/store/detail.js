@@ -15,7 +15,14 @@ const actions = {
   // 将产品添加到购物车
   async addOrUpdateShopCart({ commit }, {skuId, skuNum}) {
     let result = await reqAddOrUpdateShopCart(skuId, skuNum)
-    console.log(result)
+    // 加入购物车成功
+    if (result.code === 200) {
+      return 'ok'
+
+    } else {
+      return Promise.reject(new Error('faile'))
+    }
+
   }
 }
 
