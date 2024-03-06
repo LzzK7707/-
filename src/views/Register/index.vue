@@ -20,7 +20,6 @@
         <button>获取验证码</button>
         <img ref="code" src="http://182.92.128.115/api/user/passport/code" alt="code" />
         <span class="error-msg">错误提示信息</span>
-
       </div>
       <div class="content">
         <label>登录密码:</label>
