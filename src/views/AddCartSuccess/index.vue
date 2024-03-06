@@ -27,10 +27,9 @@
 <script>
 export default {
   name: 'AddCartSuccess',
-  data() {
-    return {
-      //购物车成功组件，获取会话存储的数据【商品信息】
-      info: JSON.parse(sessionStorage.getItem('SKUINFO')) || {}
+  computed: {
+    skuInfo() {
+      return JSON.parse(sessionStorage.getItem('SKUINFO'))
     }
   }
 }

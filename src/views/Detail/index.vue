@@ -385,7 +385,7 @@ export default {
         // 产品信息的数据复杂，通过会话存储（会话结束，数据消失）
         this.$router.push({ name: 'addcartsuccess', query: { skuNum: this.skuNum } })
       } catch (error) {
-        alert(error.message)// 
+        alert(error.message) //
       }
     }
   }
