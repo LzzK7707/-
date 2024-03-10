@@ -11,33 +11,33 @@
       </h3>
       <div class="content">
         <label>手机号:</label>
-        <input type="text" placeholder="请输入你的手机号" v-model="Tel" />
+        <input type="text" placeholder="请输入你的手机号" v-model="phone" />
         <span class="error-msg">错误提示信息</span>
       </div>
       <div class="content">
         <label>验证码:</label>
-        <input type="text" placeholder="请输入验证码" v-model="verificationCode" />
-        <button @click="$store.dispatch('getCode', phone)">获取验证码</button>
-        <img ref="code" src="http://182.92.128.115/api/user/passport/code" alt="code" />
+        <input type="text" placeholder="请输入验证码" v-model="code" />
+        <button @click="getCode">获取验证码</button>
+        <!--<img ref="code" src="http://182.92.128.115/api/user/passport/code" alt="code" />-->
         <span class="error-msg">错误提示信息</span>
       </div>
       <div class="content">
         <label>登录密码:</label>
-        <input type="text" placeholder="请输入你的登录密码" />
+        <input type="password" placeholder="请输入你的登录密码" v-model="password" />
         <span class="error-msg">错误提示信息</span>
       </div>
       <div class="content">
         <label>确认密码:</label>
-        <input type="text" placeholder="请输入确认密码" />
+        <input type="password" placeholder="请输入确认密码" v-model="password1" />
         <span class="error-msg">错误提示信息</span>
       </div>
       <div class="controls">
-        <input name="m1" type="checkbox" />
+        <input name="m1" type="checkbox" :checked="agree" />
         <span>同意协议并注册《尚品汇用户协议》</span>
         <span class="error-msg">错误提示信息</span>
       </div>
       <div class="btn">
-        <button>完成注册</button>
+        <button @click="registerAccount">完成注册</button>
       </div>
     </div>
 
@@ -64,8 +64,29 @@ export default {
   name: 'Register',
   data() {
     return {
-      Tel: '',
-      verificationCode: ''
+      // 手机号
+      phone: '',
+      // 验证码
+      code: '',
+      // 密码
+      password: '',
+      // 确认密码
+      password1: '',
+      // 是否同意
+      agree: true
+    }
+  },
+  methods: {
+    async getCode() {
+      try {
+        const { phone } = this
+        phone && (await this.$store.dispatch('getCode', phone))
+        this.code = this.$store.state.user.code
+      } catch (error) {}
+    },
+    registerAccount() {
+      const { phone, code, password, password1 } = this;
+      phone && code && password == password1 && this.$store.dispatch('registerAccount', { phone, code, password })
     }
   }
 }
