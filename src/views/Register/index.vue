@@ -11,13 +11,13 @@
       </h3>
       <div class="content">
         <label>手机号:</label>
-        <input type="text" placeholder="请输入你的手机号" />
+        <input type="text" placeholder="请输入你的手机号" v-model="Tel" />
         <span class="error-msg">错误提示信息</span>
       </div>
       <div class="content">
         <label>验证码:</label>
-        <input type="text" placeholder="请输入验证码" />
-        <button>获取验证码</button>
+        <input type="text" placeholder="请输入验证码" v-model="verificationCode" />
+        <button @click="$store.dispatch('getCode', phone)">获取验证码</button>
         <img ref="code" src="http://182.92.128.115/api/user/passport/code" alt="code" />
         <span class="error-msg">错误提示信息</span>
       </div>
@@ -61,7 +61,13 @@
 
 <script>
 export default {
-  name: 'Register'
+  name: 'Register',
+  data() {
+    return {
+      Tel: '',
+      verificationCode: ''
+    }
+  }
 }
 </script>
 

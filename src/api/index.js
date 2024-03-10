@@ -2,6 +2,7 @@
 // 引入二次封装的axios（带有请求、响应拦截器）
 import requests from './ajax'
 import mockRequest from './mockAjax'
+import * as url from 'url'
 
 //三级联动接口
 // /api/product/getBaseCategoryList   get   无参数
@@ -23,4 +24,6 @@ export const reqGoodsInfo = skuId => requests({ url: `/item/${skuId}`, method: '
 
 // 将产品添加到购物车
 export const reqAddOrUpdateShopCart = (skuId, skuNum) =>
-  requests({ url: `/cart/addToCart/${skuId}/${skuNum}`, method: 'post' })
+requests({ url: `/cart/addToCart/${skuId}/${skuNum}`, method: 'post' })
+
+export const reqGetCode = phone => requests({ url: `/user/passport/code/${phone}`, method: 'get' })
