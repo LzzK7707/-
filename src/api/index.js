@@ -24,19 +24,19 @@ export const reqGoodsInfo = skuId => requests({ url: `/item/${skuId}`, method: '
 
 // 将产品添加到购物车
 export const reqAddOrUpdateShopCart = (skuId, skuNum) =>
-  requests({ url: `/cart/addToCart/${skuId}/${skuNum}`, method: 'post' })
+    requests({ url: `/cart/addToCart/${skuId}/${skuNum}`, method: 'post' })
 
 // 获取验证码
 export const reqGetCode = phone => requests({ url: `/user/passport/sendCode/${phone}`, method: 'get' })
 
 // 注册账号
 export const reqRegisterAccount = (phone, password, code) =>
-  requests({
-    url: '/user/passport/register',
-    method: 'post',
-    data: {
-      phone,
-      password,
-      code
-    }
-  })
+    requests({
+        url: '/user/passport/register',
+        method: 'post',
+        data: {
+            phone,
+            password,
+            code
+        }
+    })
