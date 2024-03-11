@@ -11,7 +11,7 @@ const actions = {
     let result = await reqGetCode(phone)
     if (result.code === 200) {
       commit('GETCODE', result.data)
-      return 'ok'
+      return 'success'
     } else {
       return Promise.reject(new Error('faile'))
     }
@@ -19,7 +19,11 @@ const actions = {
   // 注册账号
   async registerAccount({ commit }, data) {
     let result = await reqRegisterAccount(data.phone, data.password, data.code)
-    console.log(result)
+    if (result.code === 200) {
+      return 'success'
+    } else {
+      return Promise.reject(new Error('faile'))
+    }
   }
 }
 
