@@ -87,10 +87,7 @@ export default {
         async registerAccount() {
             try {
                 const { phone, code, password, password1 } = this
-                phone &&
-                    code &&
-                    password == password1 &&
-                    this.$store.dispatch('registerAccount', { phone, code, password })
+                phone &&code &&password == password1 &&this.$store.dispatch('registerAccount', { phone, code, password })
                 this.$router.push('/login')
             } catch (error) {
                 alert('注册失败，请重新注册！')
