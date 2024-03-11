@@ -76,7 +76,7 @@ export default {
             agree: true
         }
     },
-    methods: { 
+    methods: {
         async getCode() {
             try {
                 const { phone } = this
@@ -109,7 +109,7 @@ export default {
         width: 1200px;
         height: 445px;
         border: 1px solid rgb(223, 223, 223);
-        margin: 0 auto;
+        margin: 0 auto;   
 
         h3 {
             background: #ececec;
