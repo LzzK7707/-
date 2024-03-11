@@ -76,7 +76,7 @@ export default {
             agree: true
         }
     },
-    methods: {
+    methods: { 
         async getCode() {
             try {
                 const { phone } = this
