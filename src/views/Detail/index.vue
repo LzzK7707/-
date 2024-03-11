@@ -383,7 +383,10 @@ export default {
                 sessionStorage.getItem('SKUINFO', JSON.stringify(this.skuInfo))
                 // 进行路由的跳转
                 // 产品信息的数据复杂，通过会话存储（会话结束，数据消失）
-                this.$router.push({ name: 'addcartsuccess', query: { skuNum: this.skuNum } })
+                this.$router.push({
+                    name: 'addcartsuccess',
+                    query: { skuNum: this.skuNum }
+                })
             } catch (error) {
                 alert(error.message) //
             }

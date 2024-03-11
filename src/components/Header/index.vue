@@ -63,7 +63,10 @@ export default {
 
             // 第三种：对象形式
             if (this.$route.query) {
-                let location = { name: 'search', params: { keyword: this.keyword || undefined } }
+                let location = {
+                    name: 'search',
+                    params: { keyword: this.keyword || undefined }
+                }
                 location.query = this.$route.query
                 this.$router.push(location)
             }
