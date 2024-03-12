@@ -13,7 +13,7 @@ const actions = {
             commit('GETCODE', result.data)
             return 'success'
         } else {
-            return Promise.reject(new Error('faile'))
+            return Promise.reject(new Error('file'))
         }
     },
     // 注册账号
@@ -22,7 +22,7 @@ const actions = {
         if (result.code === 200) {
             return 'success'
         } else {
-            return Promise.reject(new Error('faile'))
+            return Promise.reject(new Error('fail'))
         }
     }
 }

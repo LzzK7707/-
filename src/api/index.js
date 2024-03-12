@@ -1,8 +1,7 @@
 //API统一管理
 // 引入二次封装的axios（带有请求、响应拦截器）
-import requests from './ajax'
+import requests from './requsets'
 import mockRequest from './mockAjax'
-import * as url from 'url'
 
 //三级联动接口
 // /api/product/getBaseCategoryList   get   无参数
