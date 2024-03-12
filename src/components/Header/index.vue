@@ -41,7 +41,7 @@
     </header>
 </template>
 
-<script>
+<script> 
 export default {
     name: 'Header',
     data() {
