@@ -7,11 +7,11 @@ import user from '@/store/user'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    //实现Vuex模块化开发存储数据
-    modules: {
-        home,
-        search,
-        detail,
-        user
-    }
+  //实现Vuex模块化开发存储数据
+  modules: {
+    home,
+    search,
+    detail,
+    user
+  }
 })
