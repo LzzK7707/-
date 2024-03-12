@@ -42,8 +42,6 @@
 </template>
 
 <script>
-import login from '@/views/Login/index.vue'
-
 export default {
     name: 'Header',
     data() {
