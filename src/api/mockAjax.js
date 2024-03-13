@@ -10,13 +10,13 @@ const request = axios.create({
   timeout: 5000
 })
 
-// 请求拦截器：在发送请求之前做些什么
+// 请求拦截器
 request.interceptors.request.use(function (config) {
   nprogress.start()
   return config
 })
 
-// 响应拦截器：在发送请求之后做些什么
+// 响应拦截器
 request.interceptors.response.use(
   response => {
     nprogress.done()
