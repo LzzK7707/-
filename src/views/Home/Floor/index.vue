@@ -47,10 +47,10 @@
             <div class="split">
               <span class="floor-x-line"></span>
               <div class="floor-conver-pit">
-                <img :src="list.recommendList[0]" />
+                <img :src="list.recommendList[0]"  alt=""/>
               </div>
               <div class="floor-conver-pit">
-                <img :src="list.recommendList[1]" />
+                <img :src="list.recommendList[1]"  alt=""/>
               </div>
             </div>
             <div class="split center">
@@ -59,10 +59,10 @@
             <div class="split">
               <span class="floor-x-line"></span>
               <div class="floor-conver-pit">
-                <img :src="list.recommendList[2]" />
+                <img :src="list.recommendList[2]"  alt=""/>
               </div>
               <div class="floor-conver-pit">
-                <img :src="list.recommendList[3]" />
+                <img :src="list.recommendList[3]"  alt=""/>
               </div>
             </div>
           </div>
@@ -71,12 +71,12 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: '',
   props: ['list']
 }
+  
 </script>
 
 <style scoped lang="less">

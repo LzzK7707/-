@@ -96,11 +96,9 @@ export default {
         this.show = true
       }
     },
-    //精益求精
-    //将全部的子节点的事件委派给父节点->事件回调就一个
+
     goSearch(event) {
-      //div父节点子元素太多,点到的不一定是a标签
-      //要区分一级分类、二级分类、三级分类的a标签
+      
       let targetNode = event.target
       //获取触发事件节点的自定义属性a:data-categoryNam
       let { categoryname, category1id, category2id, category3id } = targetNode.dataset
