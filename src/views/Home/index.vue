@@ -30,7 +30,9 @@ export default {
     Brand
   },
   mounted() {
-    this.$store.dispatch('getFloorList') // 不能再floor组件中派遣， floor组件需要使用两次
+    this.$store.dispatch('getFloorList') //floor会被使用两次，所以在这里派遣
+    // 获取用户信息在首页展示
+    // this.$store.dispatch('getUserInfo')
   },
   computed: {
     ...mapState({

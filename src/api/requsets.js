@@ -11,7 +11,14 @@ const requests = axios.create({
 })
 
 // 请求拦截器：在发送请求之前做些什么
-requests.interceptors.request.use(function (config) {
+requests.interceptors.request.use(config => {
+  // if (store.state.detail.uuid_token) {
+  //   config.headers.userTmpId = store.state.detail.uuid_token
+  // }
+
+  if (store.state.user.token) {
+    config.headers.token = store.state.user.token
+  }
   nprogress.start()
   return config
 })
@@ -24,7 +31,7 @@ requests.interceptors.response.use(
   },
   error => {
     // 响应失败时的回调函数
-    return Promise.reject(new error('请求失败'))
+    return Promise.reject(new Error('请求失败'))
   }
 )
 export default requests

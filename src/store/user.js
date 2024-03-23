@@ -1,4 +1,4 @@
-import { reqGetCode, reqRegisterAccount, reqUserLogin } from '@/api'
+import { reqGetCode, reqRegisterAccount, reqUserLogin, reqGetUserInfo } from '@/api'
 
 // 登录与注册
 const state = {
@@ -27,7 +27,7 @@ const actions = {
     }
   },
   // 登录账号
-  async userLogin({commit}, data) {
+  async userLogin({ commit }, data) {
     let result = await reqUserLogin(data)
     if (result.code === 200) {
       commit('USERLOGIN', result.data.token)
@@ -35,8 +35,13 @@ const actions = {
     } else {
       return Promise.reject(new Error('账号或密码错误'))
     }
-    
-  }
+  },
+  // 获取用户信息
+  // async reqGetUserInfo({ commit }) {
+  //   let result = await reqGetUserInfo()
+  //   console.log(result)
+
+  // }
 }
 
 const mutations = {
