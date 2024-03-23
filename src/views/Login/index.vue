@@ -8,10 +8,19 @@ export default {
     }
   },
   methods: {
-    userLogin() {
+    async userLogin() {
+      //整理参数
       const { phone, password } = this
-      if (phone && password) {
-        this.$store.dispatch('userLogin', { phone, password })
+      //在发登录请求
+      try {
+        //登录成功
+        await this.$store.dispatch('userLogin', { phone, password })
+
+        let goPath = this.$route.query.redirect || '/home'
+        //跳转到首页
+        this.$router.push(goPath)
+      } catch (error) {
+        alert(error.message)
       }
     }
   }

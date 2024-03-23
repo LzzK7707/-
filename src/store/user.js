@@ -2,7 +2,8 @@ import { reqGetCode, reqRegisterAccount, reqUserLogin } from '@/api'
 
 // 登录与注册
 const state = {
-  code: ''
+  code: '',
+  token: ''
 }
 
 const actions = {
@@ -27,7 +28,13 @@ const actions = {
   },
   // 登录账号
   async userLogin({commit}, data) {
-    let result = await reqUserLogin(data.phone, data.password)
+    let result = await reqUserLogin(data)
+    if (result.code === 200) {
+      commit('USERLOGIN', result.data.token)
+      return 'success'
+    } else {
+      return Promise.reject(new Error('账号或密码错误'))
+    }
     
   }
 }
@@ -37,7 +44,7 @@ const mutations = {
     state.code = code
   },
   USERLOGIN(state, token) {
-    
+    state.token = token
   }
 }
 

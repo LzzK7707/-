@@ -33,7 +33,10 @@ export const reqGoodsInfo = skuId =>
 
 // 将产品添加到购物车
 export const reqAddOrUpdateShopCart = (skuId, skuNum) =>
-  requests({ url: `/cart/addToCart/${skuId}/${skuNum}`, method: 'post' })
+  requests({
+    url: `/cart/addToCart/${skuId}/${skuNum}`,
+    method: 'post'
+  })
 
 // 获取验证码
 export const reqGetCode = phone =>
@@ -55,13 +58,9 @@ export const reqRegisterAccount = (phone, password, code) =>
   })
 
 //登录
-export const reqUserLogin = (phone, password) => {
+export const reqUserLogin = data =>
   requests({
-    url: '/user/passport/login',
+    url: `/user/passport/login`,
     method: 'post',
-    data: {
-      phone,
-      password
-    }
+    data
   })
-}
