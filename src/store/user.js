@@ -28,12 +28,7 @@ const actions = {
   // 登录账号
   async userLogin({commit}, data) {
     let result = await reqUserLogin(data.phone, data.password)
-    if (result.code === 200) {
-      commit('USERLOGIN',result.code.token) 
-      return 'success'
-    } else {
-      return Promise.reject(new Error('fail'))
-    }
+    
   }
 }
 
