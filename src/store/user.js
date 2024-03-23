@@ -1,4 +1,4 @@
-import { reqGetCode, reqRegisterAccount } from '@/api'
+import { reqGetCode, reqRegisterAccount, reqUserLogin } from '@/api'
 
 // 登录与注册
 const state = {
@@ -13,7 +13,7 @@ const actions = {
       commit('GETCODE', result.data)
       return 'success'
     } else {
-      return Promise.reject(new Error('file'))
+      return Promise.reject(new Error('fail'))
     }
   },
   // 注册账号
@@ -24,12 +24,25 @@ const actions = {
     } else {
       return Promise.reject(new Error('fail'))
     }
+  },
+  // 登录账号
+  async userLogin({commit}, data) {
+    let result = await reqUserLogin(data.phone, data.password)
+    if (result.code === 200) {
+      commit('USERLOGIN',result.code.token) 
+      return 'success'
+    } else {
+      return Promise.reject(new Error('fail'))
+    }
   }
 }
 
 const mutations = {
   GETCODE(state, code) {
     state.code = code
+  },
+  USERLOGIN(state, token) {
+    
   }
 }
 
